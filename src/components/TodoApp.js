@@ -6,6 +6,9 @@ export default class TodoApp extends Component {
     items: JSON.parse(localStorage.getItem("todo"))
       ? JSON.parse(localStorage.getItem("todo"))
       : [],
+    checked: JSON.parse(localStorage.getItem("check"))
+      ? JSON.parse(localStorage.getItem("check"))
+      : [],
   };
 
   handleChange = (event) => {
@@ -14,10 +17,11 @@ export default class TodoApp extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { input, items } = this.state;
+    const { input, items, checked } = this.state;
     if (input !== "") {
       this.setState({
         items: [...items, input],
+        checked: [...checked, false],
         input: "",
       });
     }
@@ -26,6 +30,7 @@ export default class TodoApp extends Component {
   handleDelete = (key) => {
     this.setState({
       items: this.state.items.filter((value, index) => index !== key),
+      checked: this.state.checked.filter((value, index) => index !== key),
     });
   };
 
@@ -41,9 +46,25 @@ export default class TodoApp extends Component {
       items: [...temp],
     });
   };
+
+  handleCheck = (key) => {
+    var checkarray = [...this.state.checked];
+    const arrayB = this.state.checked.map((data, index) => {
+      if (key === index) {
+        checkarray[key] = !data;
+      }
+      return 0;
+    });
+    this.setState({
+      checked: [...checkarray],
+    });
+    console.log(arrayB);
+  };
   render() {
-    const { input, items } = this.state;
+    const { input, items, checked } = this.state;
     localStorage.setItem("todo", JSON.stringify(items));
+    localStorage.setItem("check", JSON.stringify(checked));
+
     return (
       <div className="todo-container">
         <form className="input-container" onSubmit={this.handleSubmit}>
@@ -61,6 +82,14 @@ export default class TodoApp extends Component {
             {items.map((data, index) => {
               return (
                 <li key={index}>
+                  <label className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      onChange={() => this.handleCheck(index)}
+                      defaultChecked={this.state.checked[index]}
+                    ></input>
+                    <span className="checkbox-custom"></span>
+                  </label>
                   <input
                     className="list-input"
                     type="text"
