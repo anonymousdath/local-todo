@@ -1,0 +1,77 @@
+.todo-container {
+  width: 350px;
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translateX(-50%) translateY(-50%); */
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+}
+h1 {
+  margin: 0;
+  margin-bottom: 15px;
+  color: dodgerblue;
+}
+
+.input-container {
+  background-color: rgb(7, 67, 128);
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgb(31, 29, 29);
+}
+.input-container input {
+  background-color: rgb(7, 67, 128);
+  width: 100%;
+  border: 1px solid silver;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-left: 0;
+  border: none;
+  border-bottom: 1px solid dodgerblue;
+  color: dodgerblue;
+  font-weight: bold;
+  /* font-size: 2px; */
+}
+.input-container input::placeholder {
+  color: dodgerblue;
+}
+
+.input-container input:focus {
+  outline: none;
+}
+ul {
+  text-align: left;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+  background-color: rgb(7, 67, 128);
+  padding: 15px;
+  padding-left: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgb(31, 29, 29);
+  color: dodgerblue;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ul li i {
+  text-align: right;
+  flex: 1;
+  cursor: pointer;
+}
+
+.list-input {
+  background-color: rgb(7, 67, 128);
+  color: dodgerblue;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding-left: 26px;
+}
